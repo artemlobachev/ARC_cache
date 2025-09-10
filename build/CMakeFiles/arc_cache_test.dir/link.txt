@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/arc_cache_test.dir/link.d CMakeFiles/arc_cache_test.dir/tests/main.cpp.o -o arc_cache_test  libarc_cache.a
