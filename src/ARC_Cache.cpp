@@ -13,9 +13,9 @@ int main()
     {
         size_t key = 0;
         std::cin >> key;
-        cache.add_key_is_item(key);
+        cache.add_cache(key, key);
+        std::cout << cache.get_item(key) << std::endl;
     }
 
-    cache.get_hit_count();
     cache.dump();
 }
