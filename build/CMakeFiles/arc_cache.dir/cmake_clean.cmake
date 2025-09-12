@@ -1,8 +1,9 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/arc_cache.dir/link.d"
   "CMakeFiles/arc_cache.dir/src/ARC_Cache.cpp.o"
   "CMakeFiles/arc_cache.dir/src/ARC_Cache.cpp.o.d"
-  "libarc_cache.a"
-  "libarc_cache.pdb"
+  "arc_cache"
+  "arc_cache.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

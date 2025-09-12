@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/opt_cache.dir/link.d CMakeFiles/opt_cache.dir/src/optimal_cache.cpp.o -o opt_cache

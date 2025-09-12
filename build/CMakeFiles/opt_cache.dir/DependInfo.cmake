@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/lob_art/progr/3rd_sem_c++/course_vladimirov/hashing/src/ARC_Cache.cpp" "CMakeFiles/arc_cache.dir/src/ARC_Cache.cpp.o" "gcc" "CMakeFiles/arc_cache.dir/src/ARC_Cache.cpp.o.d"
-  "" "arc_cache" "gcc" "CMakeFiles/arc_cache.dir/link.d"
+  "/home/lob_art/progr/3rd_sem_c++/course_vladimirov/hashing/src/optimal_cache.cpp" "CMakeFiles/opt_cache.dir/src/optimal_cache.cpp.o" "gcc" "CMakeFiles/opt_cache.dir/src/optimal_cache.cpp.o.d"
+  "" "opt_cache" "gcc" "CMakeFiles/opt_cache.dir/link.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

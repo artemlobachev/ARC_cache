@@ -130,17 +130,17 @@ arc_cache/fast:
 .PHONY : arc_cache/fast
 
 #=============================================================================
-# Target rules for targets named arc_cache_test
+# Target rules for targets named opt_cache
 
 # Build rule for target.
-arc_cache_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 arc_cache_test
-.PHONY : arc_cache_test
+opt_cache: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 opt_cache
+.PHONY : opt_cache
 
 # fast build rule for target.
-arc_cache_test/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arc_cache_test.dir/build.make CMakeFiles/arc_cache_test.dir/build
-.PHONY : arc_cache_test/fast
+opt_cache/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opt_cache.dir/build.make CMakeFiles/opt_cache.dir/build
+.PHONY : opt_cache/fast
 
 src/ARC_Cache.o: src/ARC_Cache.cpp.o
 .PHONY : src/ARC_Cache.o
@@ -166,29 +166,29 @@ src/ARC_Cache.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/arc_cache.dir/build.make CMakeFiles/arc_cache.dir/src/ARC_Cache.cpp.s
 .PHONY : src/ARC_Cache.cpp.s
 
-tests/main.o: tests/main.cpp.o
-.PHONY : tests/main.o
+src/optimal_cache.o: src/optimal_cache.cpp.o
+.PHONY : src/optimal_cache.o
 
 # target to build an object file
-tests/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arc_cache_test.dir/build.make CMakeFiles/arc_cache_test.dir/tests/main.cpp.o
-.PHONY : tests/main.cpp.o
+src/optimal_cache.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opt_cache.dir/build.make CMakeFiles/opt_cache.dir/src/optimal_cache.cpp.o
+.PHONY : src/optimal_cache.cpp.o
 
-tests/main.i: tests/main.cpp.i
-.PHONY : tests/main.i
+src/optimal_cache.i: src/optimal_cache.cpp.i
+.PHONY : src/optimal_cache.i
 
 # target to preprocess a source file
-tests/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arc_cache_test.dir/build.make CMakeFiles/arc_cache_test.dir/tests/main.cpp.i
-.PHONY : tests/main.cpp.i
+src/optimal_cache.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opt_cache.dir/build.make CMakeFiles/opt_cache.dir/src/optimal_cache.cpp.i
+.PHONY : src/optimal_cache.cpp.i
 
-tests/main.s: tests/main.cpp.s
-.PHONY : tests/main.s
+src/optimal_cache.s: src/optimal_cache.cpp.s
+.PHONY : src/optimal_cache.s
 
 # target to generate assembly for a file
-tests/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/arc_cache_test.dir/build.make CMakeFiles/arc_cache_test.dir/tests/main.cpp.s
-.PHONY : tests/main.cpp.s
+src/optimal_cache.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/opt_cache.dir/build.make CMakeFiles/opt_cache.dir/src/optimal_cache.cpp.s
+.PHONY : src/optimal_cache.cpp.s
 
 # Help Target
 help:
@@ -199,13 +199,13 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... arc_cache"
-	@echo "... arc_cache_test"
+	@echo "... opt_cache"
 	@echo "... src/ARC_Cache.o"
 	@echo "... src/ARC_Cache.i"
 	@echo "... src/ARC_Cache.s"
-	@echo "... tests/main.o"
-	@echo "... tests/main.i"
-	@echo "... tests/main.s"
+	@echo "... src/optimal_cache.o"
+	@echo "... src/optimal_cache.i"
+	@echo "... src/optimal_cache.s"
 .PHONY : help
 
 

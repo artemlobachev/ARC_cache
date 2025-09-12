@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <iostream>
 #include <list>
-#include <stdexcept>
+#include <vector>
 #include <unordered_map>
 #include <cassert>
 
@@ -362,7 +362,15 @@ public:
             add_new_item(key, item); 
             return false; 
         }
-    }     
+    }
+    
+    std::size_t run_ARC_cache(std::vector<std::pair<key_t, item_t>> input_key_item)
+    {
+        for (std::size_t i = 0; i < input_key_item.size(); i++)
+            add_cache(input_key_item[i].first, input_key_item[i].second);
+
+        return get_hit_count();
+    }
 
     ~ARCCache()
     {

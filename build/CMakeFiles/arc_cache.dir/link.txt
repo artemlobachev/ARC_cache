@@ -1,2 +1,1 @@
-/usr/bin/ar qc libarc_cache.a CMakeFiles/arc_cache.dir/src/ARC_Cache.cpp.o
-/usr/bin/ranlib libarc_cache.a
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/arc_cache.dir/link.d CMakeFiles/arc_cache.dir/src/ARC_Cache.cpp.o -o arc_cache
