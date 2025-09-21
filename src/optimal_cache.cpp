@@ -1,26 +1,24 @@
-#include <iostream>
 #include <vector>
 
-#include "../include/optimal_cache.hpp"
+#include "../include/optimal/optimal_cache.hpp"
+#include "../include/utils/driver/driver.hpp"
+
 
 int main()
 {
-    std::size_t capacity = 0;
-    std::size_t amount_numbers = 0;
+    HtmlLogger::init("optimal_cache_log");
 
-    std::cin >> capacity >> amount_numbers; 
+    ssize_t capacity = 0;
+    ssize_t amount_numbers = 0;
+    
+    std::cin >> capacity >> amount_numbers;
 
-    std::vector<std::pair<int, int>> input_items(amount_numbers);
+    CacheDriver<ssize_t, ssize_t> driver;
+    auto optimal_cache_requests = driver.generate_requests(amount_numbers);
 
-    for (std::size_t i = 0; i < amount_numbers;i++)
-    {
-        std::cin >> input_items[i].first;
-        input_items[i].second = input_items[i].first;
-    }
+    OPT_cache<ssize_t, ssize_t> optimal_cache(capacity);
+    driver.run_cache(optimal_cache, optimal_cache_requests);
 
-    OPT_cache<int, int> cache(capacity, amount_numbers, input_items);
-
-    cache.run_optimal_cache();
-
-    std::cout << "hits: " << cache.get_hit_count() << std::endl;
+    LOG_INFO("DOLBAEB", "HELLO\n", 5);
+    HtmlLogger::close();
 }

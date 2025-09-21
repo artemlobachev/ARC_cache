@@ -1,26 +1,26 @@
 #include <vector>
 
-#include "../include/ARC_Cache.hpp"
+#include "../include/ARC/ARC_Cache.hpp"
+#include "../include/utils/driver/driver.hpp"
+
 
 int main()
 {
-    std::size_t capacity = 0;
-    std::size_t amount_numbers = 0;
+    HtmlLogger::init("arc_cache_log");
+
+    LOG_INFO("DOLBAEB", "HELLO\n", 5);
+
+    ssize_t capacity = 0;
+    ssize_t amount_numbers = 0;
     
     std::cin >> capacity >> amount_numbers;
 
-    ARCCache<std::size_t, std::size_t> cache(capacity);
+    CacheDriver<ssize_t, ssize_t> driver;
+    auto arc_cache_requests = driver.generate_requests(amount_numbers);
 
-    std::vector<std::pair<std::size_t, std::size_t>> input_key_item(amount_numbers); 
+    ARCCache<ssize_t, ssize_t> arc_cache(capacity);
+    driver.run_cache(arc_cache, arc_cache_requests);
 
-    for (std::size_t i = 0; i < amount_numbers; i++)
-    {
-        size_t key = 0;
-        std::cin >> key;
-        input_key_item[i] = {key, key};
-    }
-
-    std::size_t hits_counter = cache.run_ARC_cache(input_key_item);
-    std::cout << "hits: " << hits_counter << std::endl;  
-  //  cache.dump();
+    LOG_INFO("DOLBAEB", "HELLO\n", 5);
+    HtmlLogger::close();
 }

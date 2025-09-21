@@ -1,0 +1,9 @@
+[submodule "include/utils/logger"]
+	path = include/utils/logger
+	url = git@github.com:artemlobachev/logger.git
+[submodule "include/utils/--force"]
+	path = include/utils/--force
+	url = git@github.com:artemlobachev/logger.git
+[submodule "src/utils/logger"]
+	path = src/utils/logger
+	url = git@github.com:artemlobachev/logger.git

@@ -7,51 +7,55 @@
 #include <iostream>
 #include <cstdint>
 
+#include "../CacheInterface.hpp"
+#include "../utils/logger/logger.hpp"
+
 template <typename key_t, typename item_t>
-struct OPT_cache
+struct OPT_cache : CacheInterface<key_t, item_t>
 {
 private:
-    using index_t   = typename std::size_t;
+    using index_t   = ssize_t;
     using request_t = typename std::pair<key_t, item_t>;
     using IndexMapType = typename std::unordered_map<key_t, std::deque<index_t>>;
     using CacheMapType = typename std::unordered_map<key_t, item_t>;
     using input_vector = typename std::vector<request_t>;
 
-    static constexpr key_t POISON_KEY = static_cast<std::size_t>(0XEDAA);
+    static constexpr key_t POISON_KEY = static_cast<ssize_t>(0XEDAA);
     static constexpr index_t INF_INDEX = UINT64_MAX;
 
 
-    std::size_t capacity_;
-    std::size_t amount_of_items_;
-    std::size_t hits_counter_;
+    ssize_t capacity_;
+    ssize_t hits_counter_;
 
     IndexMapType map_future_;
     CacheMapType cache_map_;
 
 
 public:
-    OPT_cache() : capacity_(0), amount_of_items_(0), hits_counter_(0) {}
-    OPT_cache(std::size_t input_capacity, std::size_t input_amount_of_items) 
-             : capacity_(input_capacity), amount_of_items_(input_amount_of_items), hits_counter_(0)
+    explicit OPT_cache() : capacity_(0), hits_counter_(0) {}
+    explicit OPT_cache(ssize_t input_capacity) 
+             : capacity_(input_capacity), hits_counter_(0)
     {
+        LOG_INFO("OPT_Cache", "Cache initialized with capacity: ", input_capacity);
     }
-    
-/*    bool add_cache(const key_t &key, const item_t &item)
+
+    ~OPT_cache()
+    {}
+
+    ssize_t run_cache(const input_vector &key_items) override
     {
-
-
-    } */
-
-
-    void run_optimal_cache(const input_vector &key_items)
-    {
-        if (capacity_ == 0) return;
-        
+        if (capacity_ <= 0LL) 
+        {
+            LOG_ERROR("OPT cache", "capacity is INVALID. WE STOP IT");
+            return 0;
+        }
         load_map_of_future(key_items);
-        for (std::size_t i = 0; i < key_items.size(); i++)
+
+        //todo: impl add_cache() and add to cache interface
+        for (ssize_t i = 0; i < key_items.size(); i++)
         {
             const auto &[curr_key, curr_item] = key_items[i];
- 
+
             if (!map_future_[curr_key].empty())
                 map_future_[curr_key].pop_front();
 
@@ -67,16 +71,23 @@ public:
                 if (should_be_replace) cache_map_[curr_key] = curr_item;
             }
         }
+
+        return hits_counter_;
     }
 
-    inline std::size_t get_hit_count() const
+    inline void dump() const override
+    {
+        print_hit_count();
+    } 
+
+    inline ssize_t get_hit_count() const override
     {
         return hits_counter_;
     }
 
-    ~OPT_cache() 
+    inline void print_hit_count() const override
     {
-        map_future_.clear();
+        std::cout << "hits: " << hits_counter_ << std::endl;
     }
 
 private:
